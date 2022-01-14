@@ -3,9 +3,9 @@ from flask import Flask, render_template
 
 
 # portfolio = ("portfolio", __name__, template_folder="templates")
-portfolio = Flask(__name__)
+app = Flask(__name__)
 
-@portfolio.route("/")
+@app.route("/")
 def index():
     title = "Portfolio"
     description = "About Me"
@@ -16,7 +16,7 @@ def index():
     )
 
 
-@portfolio.route("/projects/")
+@app.route("/projects/")
 def projects():
     title = "Projects"
     description = "Project"
@@ -27,7 +27,7 @@ def projects():
     )
 
 
-@portfolio.route("/contact/")
+@app.route("/contact/")
 def contact():
     title = "Contact"
     description = "contact"
@@ -38,7 +38,7 @@ def contact():
     )
 
 
-@portfolio.route("/resume/")
+@app.route("/resume/")
 def resume():
     title = "Resume"
     description = "Resume"
@@ -51,10 +51,10 @@ def resume():
 
 
 
-@portfolio.errorhandler(404)
+@app.errorhandler(404)
 def not_found(error_message):
     return render_template("404.html")
 
 
 if __name__ == "__main__":
-    portfolio.run()
+    app.run()
